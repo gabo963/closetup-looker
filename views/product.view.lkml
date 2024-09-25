@@ -14,9 +14,6 @@ view: product {
   dimension: brand {
     type: string
     sql: ${TABLE}.brand ;;
-  }
-  dimension: brand_google {
-    sql: ${brand} ;;
     link: {
       label: "Google"
       url: "https://www.google.com/search?q={{ value }}"
@@ -90,6 +87,11 @@ view: product {
   dimension: pageimage {
     type: string
     sql: ${TABLE}.`page-image` ;;
+    link: {
+      label: "Imagen Closetup"
+      url: "{{value}}"
+      icon_url: "https://google.com/favicon.ico"
+    }
   }
   dimension: productstate {
     type: string

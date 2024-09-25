@@ -10,5 +10,9 @@ datagroup: closetup_prueba_2_default_datagroup {
 
 persist_with: closetup_prueba_2_default_datagroup
 
-explore: product {}
-
+explore: product {
+  #access_filter: {
+  #  field: product.brand
+  #  user_attribute: brand
+  #}
+}
