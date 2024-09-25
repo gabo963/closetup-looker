@@ -16,3 +16,6 @@ explore: product {
   #  user_attribute: brand
   #}
 }
+
+explore: contacts {
+}

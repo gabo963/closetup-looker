@@ -83,10 +83,34 @@ view: contacts {
     map_layer_name: countries
     sql: ${TABLE}.Country ;;
   }
+  parameter: date_granularity {
+    type: unquoted
+    allowed_value: {
+      label: "Year"
+      value: "year"
+    }
+    allowed_value: {
+      label: "Month"
+      value: "month"
+    }
+    allowed_value: {
+      label: "Week"
+      value: "week"
+    }
+  }
   dimension_group: create {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.CreateDate ;;
+  }
+  dimension: date {
+    sql: {% if date_granularity._parameter_value == 'year' %}
+          ${create_year}
+        {% elsif date_granularity._parameter_value == 'month' %}
+          ${create_month}
+        {% elsif date_granularity._parameter_value == 'week' %}
+          ${create_week}
+        {% endif %} ;;
   }
   dimension_group: dateentered_customer_lifecycle_stage_pipeline__ {
     type: time
