@@ -15,6 +15,11 @@ explore: product {
   #  field: product.brand
   #  user_attribute: brand
   #}
+  join: contacts {
+    sql_on: ${product.owneremail} = ${contacts.email};;
+    relationship: one_to_one
+    type: full_outer
+  }
 }
 
 explore: contacts {
